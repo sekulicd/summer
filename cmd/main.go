@@ -7,6 +7,7 @@ import (
 
 func main() {
 	http.HandleFunc("/", hello)
+	fmt.Println("server started ...")
 	err := http.ListenAndServe(":3000", nil)
 	if err != nil {
 		fmt.Println(err)
@@ -15,7 +16,7 @@ func main() {
 
 
 func hello(w http.ResponseWriter, r *http.Request) {
-	_, err := fmt.Fprintf(w, "Hello world\n")
+	_, err := fmt.Fprintf(w, "Hello world")
 	if err != nil {
 		fmt.Println(err)
 	}
