@@ -10,6 +10,7 @@ steps:
         path: /go
     commands:
       - make ci
+      - make cd
       - ls -lrt
   - name: cd
     image: docker
