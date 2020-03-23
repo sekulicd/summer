@@ -16,4 +16,4 @@ COPY --from=builder /app/bin .
 
 EXPOSE 3000
 
-ENTRYPOINT ["./summer"]
+ENTRYPOINT ["./summer-server"]

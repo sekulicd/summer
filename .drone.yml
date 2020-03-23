@@ -2,6 +2,7 @@ kind: pipeline
 name: default
 
 steps:
+
   - name: ci
     image: golang
     volumes:
@@ -10,6 +11,15 @@ steps:
     commands:
       - make ci
       - ls -lrt
+
+  - name: cd
+      image: golang
+      volumes:
+        - name: deps
+          path: /go
+      commands:
+        - make cd
+        - ls -lrt
 
 volumes:
   - name: deps

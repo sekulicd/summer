@@ -16,6 +16,9 @@ GRPC_SERVER_DIR :=summer-server
 #ci: clean vet build test cov
 ci: clean vet build test cov
 
+#cd
+cd: docker-login docker-build docker-tag docker-push
+
 .PHONY: clean
 ## clean: cleans the binary
 clean:
@@ -46,6 +49,32 @@ test:
 cov:
 	@echo "Coverage..."
 	go test -cover ./...
+
+### CONTINUOUS INTEGRATION ###
+
+### CONTINUOUS DELIVERY/DEPLOYMENT ###
+
+.PHONY: docker-login
+## docker-build: builds the summer docker image to registry
+docker-login:
+	docker login --username=${DOCKER_USERNAME} --password=${DOCKER_PASSWORD}
+
+.PHONY: docker-build
+## docker-build: builds the summer docker image to registry
+docker-build:
+	docker build -t ${APP} .
+
+.PHONY: docker-tag
+## docker-tag: run the summer docker container
+docker-tag:
+	docker tag ${APP} ${REGISTRY}/${TAG}
+
+.PHONY: docker-push
+## docker-push: pushes the summer docker image to registry
+docker-push: check-environment docker-tag
+	docker push ${REGISTRY}:${TAG}
+
+### CONTINUOUS DELIVERY/DEPLOYMENT ###
 
 .PHONY: build-local
 ## build: build the application
@@ -82,25 +111,12 @@ ifndef ENV
 	$(error ENV not set, allowed values - `staging` or `production`)
 endif
 
-.PHONY: docker-build
-## docker-build: builds the summer docker image to registry
-docker-build: build
-	docker build -t ${APP} .
+
 
 .PHONY: docker-run
 ## docker-run: run the summer docker container
 docker-run: docker-build
 	docker run -p8080:3000 -d ${APP}
-
-.PHONY: docker-tag
-## docker-tag: run the summer docker container
-docker-tag: docker-build
-	docker tag ${APP} ${REGISTRY}/${TAG}
-
-.PHONY: docker-push
-## docker-push: pushes the summer docker image to registry
-docker-push: check-environment docker-tag
-	docker push ${REGISTRY}:${TAG}
 
 .PHONY: help
 ## help: Prints this help message
