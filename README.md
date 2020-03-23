@@ -1,6 +1,6 @@
 # gRPC server/CLI client
 
-- [Simple gRPC user service and its CLI client](#simple-grpc-user-service-and-its-cli-client)
+- [gRPC service/CLI client](#simple-grpc-user-service-and-its-cli-client)
   - [Stack](#stack)
   - [Use](#use)
   - [Install](#install)
