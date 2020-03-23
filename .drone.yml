@@ -18,6 +18,8 @@ steps:
       - name: deps
         path: /go
     commands:
+      - which bash
+      - docker --version
       - make cd
 
 volumes:
