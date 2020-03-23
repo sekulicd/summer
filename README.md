@@ -18,6 +18,7 @@
 - summer-cli addTriple --num1=2 --num2=2 --num3=3
 
 ## Install
-- make ci 
+- clone repo
+- make ci
 - make cd
 - kubectl create -f deployment.yaml
