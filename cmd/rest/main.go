@@ -1,4 +1,4 @@
-package rest
+package main
 
 import (
 	"fmt"
@@ -16,7 +16,7 @@ func main() {
 
 
 func hello(w http.ResponseWriter, r *http.Request) {
-	_, err := fmt.Fprintf(w, "Hello world")
+	_, err := fmt.Fprintf(w, "Hello world seki")
 	if err != nil {
 		fmt.Println(err)
 	}
