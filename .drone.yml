@@ -1,4 +1,5 @@
 kind: pipeline
+type: docker
 name: default
 
 steps:
@@ -11,11 +12,12 @@ steps:
       - make ci
       - ls -lrt
   - name: cd
-    image: plugins/docker
+    image: golang
     volumes:
       - name: deps
         path: /go
     commands:
+      - docker --version
       - ls -lrt
       - make cd
 

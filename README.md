@@ -30,40 +30,10 @@
 
 ## Stack
 
-- **CI/CD**: Drone.io (tests, coverage, build docker image, upload
-  `users-cli` CLI binaries to Github Releases using [`goreleaser`][goreleaser])
-- **Coverage**: Coveralls, Codecov
-- **Code Quality**: Go Report Card, GolangCI (CI) and Pre-commit-go (local
-  git hook) with:
-  - **Static analysis**: gocritic, gosec, golint, goimports, deadcode,
-    errcheck, gosimple, govet, ineffassign, staticcheck, structcheck,
-    typecheck, unused, varcheck
-  - **Formatting**: gofmt on the CI and locally with 'format on save' and
-    Pre-commit-hook
-- **OCI orchestration**: Kubernetes, OCI runtime = Docker, Minikube for
-  testing, GKE for more testing (see related [helm-gke-terraform][])
-- **Config management**: Helm
-- **Dependency analysis** (the DevSecOps trend): [dependabot][] (updates go
-  modules dependencies daily)
-- **Local dev**: Vim, VSCode and Goland, [`gotests`][gotests],
-  `golangci-lint`, `pcg` (pre-commit-go), `protoc`, `prototool`, `grpcurl`,
-  `is-http2`:
-
-  ```sh
-  brew install golangci/tap/golangci-lint protobuf prototool grpcurl
-  npm install -g is-http2-cli
-  go install github.com/maruel/pre-commit-go/cmd/...
-  ```
-
-I created this microservice from scratch. If I was to create a new
-microservice like this, I would probably use Lile for generating it (if it
-needs Postres + opentracing + prom metrics + service discovery). For
-example, [lile-example][].
-
-[dependabot]: https://dependabot.com/
-[gotests]: https://github.com/cweill/gotests
-[lile]: https://github.com/lileio/lile
-[lile-example]: https://github.com/arbarlow/account_service
+- **gRPC**: for server side
+- **Cobra**: for CLI
+- **CI/CD**: Drone.io
+- **OCI orchestration**: Kubernetes
 
 ## Use
 
