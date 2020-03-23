@@ -12,13 +12,11 @@ steps:
       - make ci
       - ls -lrt
   - name: cd
-    image: golang
+    image: docker
     volumes:
       - name: deps
         path: /go
     commands:
-      - docker --version
-      - ls -lrt
       - make cd
 
 volumes:
