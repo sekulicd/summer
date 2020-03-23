@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package summer;
+
+service Summer {
+    rpc addTuple (RequestTuple) returns (Response);
+    rpc addTriple (RequestTriple) returns (Response);
+}
+
+message RequestTuple {
+    int32 a = 1;
+    int32 b = 2;
+}
+
+message RequestTriple {
+    int32 a = 1;
+    int32 b = 2;
+    int32 c = 3;
+}
+
+message Response {
+    int32 sum = 1;
+}
