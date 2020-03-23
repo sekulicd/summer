@@ -16,8 +16,8 @@ steps:
       - name: deps
         path: /go
     commands:
-      - make cd
       - ls -lrt
+      - make cd
 
 volumes:
   - name: deps
