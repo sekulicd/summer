@@ -13,7 +13,7 @@ steps:
   - name: docker
     image: plugins/docker
     settings:
-      dockerfile: ci/Dockerfile
+      dockerfile: Dockerfile
       repo: sekulicd/summer_repo
       username: { from_secret: DOCKER_USERNAME }
       password: { from_secret: DOCKER_PASSWORD }
