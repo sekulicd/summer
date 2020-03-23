@@ -10,8 +10,23 @@ TAG             :=dev
 GRPC_CLIENT_DIR :=summer-cli
 GRPC_SERVER_DIR :=summer-server
 
+
+### CONTINUOUS INTEGRATION ###
+
 #ci: clean vet build test cov
-ci: clean build
+ci: clean vet build test cov
+
+.PHONY: clean
+## clean: cleans the binary
+clean:
+	@echo "Cleaning..."
+	@go clean
+
+.PHONY: vet
+## vet: code analysis
+vet:
+	@echo "Vet..."
+	@go vet ./...
 
 .PHONY: build
 ## build: build the application
@@ -19,6 +34,18 @@ build:
 	@echo "Building..."
 	CGO_ENABLED=0 GOOS=linux go build -o ${BIN_DIR}/${GRPC_CLIENT_DIR} $(CMD_DIR)/${GRPC_CLIENT_DIR}/main.go
 	CGO_ENABLED=0 GOOS=linux go build -o ${BIN_DIR}/${GRPC_SERVER_DIR} $(CMD_DIR)/${GRPC_SERVER_DIR}/main.go
+
+.PHONY: test
+## test: runs go test with default values
+test:
+	@echo "Testing..."
+	go test -v -count=1 -race ./...
+
+.PHONY: cov
+## cov: generates coverage report
+cov:
+	@echo "Coverage..."
+	go test -cover ./...
 
 .PHONY: build-local
 ## build: build the application
@@ -31,17 +58,6 @@ build-local:
 ## run: runs go run main.go
 run-server:
 	go run -race $(CMD_DIR)/${GRPC_SERVER_DIR}/main.go
-
-.PHONY: clean
-## clean: cleans the binary
-clean:
-	@echo "Cleaning"
-	@go clean
-
-.PHONY: test
-## test: runs go test with default values
-test:
-	go test -v -count=1 -race ./...
 
 .PHONY: setup
 ## setup: setup go modules

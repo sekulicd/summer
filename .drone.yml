@@ -1,0 +1,16 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: ci
+    image: golang
+    volumes:
+      - name: deps
+        path: /go
+    commands:
+      - make ci
+      - ls -lrt
+
+volumes:
+  - name: deps
+    temp: {}
