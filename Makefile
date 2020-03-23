@@ -111,8 +111,6 @@ ifndef ENV
 	$(error ENV not set, allowed values - `staging` or `production`)
 endif
 
-
-
 .PHONY: docker-run
 ## docker-run: run the summer docker container
 docker-run: docker-build
