@@ -10,7 +10,6 @@ steps:
         path: /go
     commands:
       - make ci
-      - make cd
       - ls -lrt
   - name: cd
     image: docker
@@ -18,7 +17,7 @@ steps:
       - name: deps
         path: /go
     commands:
-      - which bash
+      - apt-get update && apt-get install make
       - docker --version
       - make cd
 
