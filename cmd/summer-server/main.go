@@ -9,7 +9,7 @@ import (
 	summerservice "summer/pkg/summer-server"
 )
 const (
-	grpcPort = ":50051"
+	grpcPort = ":3000"
 )
 type SummerServer struct{
 	SummerService summerservice.SummerService
