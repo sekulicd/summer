@@ -32,6 +32,7 @@ func (s *SummerServer)AddTriple(con context.Context,req *summer.RequestTriple) (
 }
 
 func main() {
+	fmt.Println("Starting grpc server ...")
 	listen, err := net.Listen("tcp", grpcPort)
 	if err != nil {
 		fmt.Printf("failed to listen: %v\n", err)

@@ -15,7 +15,7 @@ var addTupleCmd = &cobra.Command{
 	Use:   "addTuple",
 	Short: "Calculates sum of two numbers",
 	Run: func(addTupleCmd *cobra.Command, args []string) {
-		conn, err := grpc.Dial("127.0.0.1:3000", grpc.WithInsecure())
+		conn, err := grpc.Dial("127.0.0.1:30541", grpc.WithInsecure())
 		if err != nil {
 			fmt.Println(err)
 		}
