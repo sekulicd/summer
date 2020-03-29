@@ -6,7 +6,7 @@ CMD_DIR         :=cmd
 BIN_DIR         :=bin
 REGISTRY        :=sekulicd/summer_repo
 ENV             :=dev
-TAG             :=dev
+TAG             :=latest
 GRPC_CLIENT_DIR :=summer-cli
 GRPC_SERVER_DIR :=summer-server
 

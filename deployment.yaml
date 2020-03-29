@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: summer-app-container
-          image: sekulicd/summer_repo:dev
+          image: sekulicd/summer_repo:latest
+          imagePullPolicy: Always
           resources:
             limits:
               memory: "128Mi"
