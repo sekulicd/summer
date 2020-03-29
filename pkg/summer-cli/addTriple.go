@@ -15,7 +15,7 @@ var addTripleCmd = &cobra.Command{
 	Use:   "addTriple",
 	Short: "Calculates sum of three numbers",
 	Run: func(addTripleCmd *cobra.Command, args []string) {
-		conn, err := grpc.Dial("127.0.0.1:30541", grpc.WithInsecure())
+		conn, err := grpc.Dial("127.0.0.1:32513", grpc.WithInsecure())
 		if err != nil {
 			fmt.Println(err)
 		}

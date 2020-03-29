@@ -11,7 +11,7 @@ GRPC_CLIENT_DIR :=summer-cli
 GRPC_SERVER_DIR :=summer-server
 
 
-### CONTINUOUS INTEGRATION ###
+#### CONTINUOUS INTEGRATION ###
 
 #ci: clean vet build test cov
 ci: clean vet build test cov
@@ -50,9 +50,7 @@ cov:
 	@echo "Coverage..."
 	go test -cover ./...
 
-### CONTINUOUS INTEGRATION ###
-
-### CONTINUOUS DELIVERY/DEPLOYMENT ###
+#### CONTINUOUS DELIVERY/DEPLOYMENT ###
 
 .PHONY: docker-login
 ## docker-build: builds the summer docker image to registry
@@ -74,7 +72,8 @@ docker-tag:
 docker-push: check-environment docker-tag
 	docker push ${REGISTRY}:${TAG}
 
-### CONTINUOUS DELIVERY/DEPLOYMENT ###
+
+#### LOCAL DEV
 
 .PHONY: build-local
 ## build: build the application
@@ -82,6 +81,12 @@ build-local:
 	@echo "Building..."
 	go build -o ${BIN_DIR}/${GRPC_CLIENT_DIR} $(CMD_DIR)/${GRPC_CLIENT_DIR}/main.go
 	go build -o ${BIN_DIR}/${GRPC_SERVER_DIR} $(CMD_DIR)/${GRPC_SERVER_DIR}/main.go
+
+.PHONY: install
+## install-local: install CLI
+install:
+	@echo "Installing..."
+	go install ./${CMD_DIR}/${GRPC_CLIENT_DIR}
 
 .PHONY: run-server
 ## run: runs go run main.go
