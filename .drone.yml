@@ -18,7 +18,7 @@ steps:
       username: { from_secret: DOCKER_USERNAME }
       password: { from_secret: DOCKER_PASSWORD }
       tags:
-        - dev
+        - latest
 
 volumes:
   - name: deps
