@@ -12,7 +12,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     env:
-      STAGE: ${GITHUB_AUTHOR}
+      STAGE: ${GITHUB_ACTOR}
     steps:
     - name: Set up Go 1.x
       uses: actions/setup-go@v2
@@ -27,8 +27,6 @@ jobs:
       run: |
         echo ${STAGE}
         echo ${{ env.STAGE }}
-        echo ${GITHUB_AUTHOR}
-        echo ${GITHUB_REF}
 
     - name: Install Serverless
       run: sudo npm i -g serverless
