@@ -27,6 +27,8 @@ jobs:
       run: |
         echo ${STAGE}
         echo ${{ env.STAGE }}
+        echo ${GITHUB_AUTHOR}
+        echo ${GITHUB_REF}
 
     - name: Install Serverless
       run: sudo npm i -g serverless
