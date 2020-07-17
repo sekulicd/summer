@@ -11,8 +11,9 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    env:
+      STAGE: ${GITHUB_REF}
     steps:
-
     - name: Set up Go 1.x
       uses: actions/setup-go@v2
       with:
@@ -22,16 +23,7 @@ jobs:
     - name: Check out code into the Go module directory
       uses: actions/checkout@v2
 
-    - name: Get dependencies
-      run: |
-        go get -v -t -d ./...
-        if [ -f Gopkg.toml ]; then
-            curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-            dep ensure
-        fi
-
-    - name: Build
-      run: go build -v .
-
     - name: Test
-      run: go test -v .
+      run: |
+        echo ${GITHUB_REF}
+        echo ${{ env.STAGE }}
