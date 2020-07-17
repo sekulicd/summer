@@ -12,7 +12,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     env:
-      STAGE: ${GITHUB_}
+      STAGE: ${GITHUB_REF}
     steps:
     - name: Set up Go 1.x
       uses: actions/setup-go@v2
