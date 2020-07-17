@@ -25,8 +25,7 @@ jobs:
 
     - name: Test
       run: |
-        echo "se"
-        echo ${GITHUB_SHA}
+        echo ${STAGE}
         echo ${{ env.STAGE }}
 
     - name: Install Serverless
