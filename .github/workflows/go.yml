@@ -29,10 +29,5 @@ jobs:
         echo ${GITHUB_SHA}
         echo ${{ env.STAGE }}
 
-    - name: Deploy serverless application
-      uses: serverless/github-action@master
-      with:
-        args: deploy -s $GITHUB_REF --verbose
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    - name: Install Serverless
+      run: sudo npm i -g serverless
