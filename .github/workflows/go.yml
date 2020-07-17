@@ -32,8 +32,7 @@ jobs:
     - name: Deploy serverless application
       uses: serverless/github-action@master
       with:
-        args: deploy -s ${STAGE_NAME} --verbose
+        args: deploy -s ${STAGE} --verbose
       env:
-        STAGE_NAME: ${{ env.STAGE }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
